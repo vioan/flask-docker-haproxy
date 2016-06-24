@@ -1,0 +1,10 @@
+pyapp:
+  build: .
+loadbalancer:
+  image: 'dockercloud/haproxy:latest'
+  links:
+    - pyapp
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  ports:
+    - 80:80
